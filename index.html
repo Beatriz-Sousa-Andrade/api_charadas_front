@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { font-family: 'Space Grotesk', sans-serif; }
+        body, .card, button { transition: all 0.3s ease; }
+    </style>
+    <title>Gerador de Charadas • Mistério</title>
+</head>
+<body class="bg-[#46178f] flex flex-col items-center justify-center min-h-screen p-4 sm:p-6 overflow-x-hidden" id="body">
+
+    <div class="fixed -z-10 top-[-10%] right-[-10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-[#ffb6c1] rounded-full blur-[80px] sm:blur-[150px] opacity-15"></div>
+    <div class="fixed -z-10 bottom-[-10%] left-[-10%] w-[300px] sm:w-[600px] h-[300px] sm:h-[600px] bg-[#ff6b35] rounded-full blur-[150px] opacity-10"></div>
+
+    <header class="text-center mb-6">
+        <h1 class="text-5xl sm:text-6xl font-bold tracking-tight mb-1">
+            <span class="text-[#ffb6c1]">CHAR</span><span class="text-white">ADAS</span><span class="text-[#ff6b35]">.</span>
+        </h1>
+        <p class="text-[#ffb6c1]/70 font-medium uppercase tracking-[0.4em] text-[10px]">
+            desafio cerebral
+        </p>
+    </header>
+
+    <div class="grid grid-cols-1 gap-5 w-full max-w-[420px]">
+        
+        <div class="flex items-center justify-between bg-[#2d0f5e] border-2 border-[#ffb6c1] rounded-2xl px-6 py-3 shadow-[6px_6px_0px_#1a0a3e]">
+            <span class="text-white font-bold uppercase tracking-wider text-xs">🏆 Seu Progresso</span>
+            <div class="flex items-center gap-2">
+                <span class="text-[#ffb6c1]/50 text-xs font-bold uppercase">Pontos:</span>
+                <span id="pontuacao-valor" class="text-3xl font-black text-[#ffb6c1]">0</span>
+            </div>
+        </div>
+
+        <div class="group [perspective:1000px] w-full h-[320px] sm:h-[340px]">
+            <div id="card-inner" class="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] cursor-pointer">
+                <div class="absolute inset-0 [backface-visibility:hidden] bg-[#ff6b35] border-[3px] border-[#ffb6c1] rounded-3xl p-8 flex flex-col items-center justify-center text-center shadow-[12px_12px_0px_#2d0f5e]">
+                    <p id="pergunta" class="text-xl font-semibold leading-relaxed text-white drop-shadow-sm">Carregando...</p>
+                    <div class="mt-8 bg-[#2d0f5e] text-white px-6 py-2 rounded-xl text-xs font-bold uppercase border-2 border-[#ffb6c1]">
+                        clique para revelar
+                    </div>
+                </div>
+                <div class="absolute inset-0 [backface-visibility:hidden] bg-[#2d0f5e] rounded-3xl p-8 flex flex-col items-center justify-center text-center [transform:rotateY(180deg)] border-[3px] border-[#ffb6c1] shadow-[12px_12px_0px_#1a0a3e]">
+                    <span class="text-[#ffb6c1] font-bold uppercase tracking-widest text-[10px] mb-4 bg-white/10 px-4 py-1 rounded-full">A resposta é</span>
+                    <p id="resposta" class="text-3xl sm:text-4xl font-bold text-white uppercase tracking-tight">...</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+            <button id="btn-acertei" class="bg-[#2d0f5e] hover:bg-[#3d1f6e] text-[#ffb6c1] py-3 rounded-xl text-xs font-bold uppercase border-2 border-[#ffb6c1] shadow-[4px_4px_0px_#1a0a3e] active:translate-y-[2px] active:shadow-none transition-all">
+                ✅ Acertei
+            </button>
+            <button id="btn-errei" class="bg-[#2d0f5e] hover:bg-[#3d1f6e] text-white py-3 rounded-xl text-xs font-bold uppercase border-2 border-white shadow-[4px_4px_0px_#1a0a3e] active:translate-y-[2px] active:shadow-none transition-all">
+                ❌ Errei
+            </button>
+            <button id="btn-compartilhar" class="col-span-2 bg-[#ff6b35] text-[#2d0f5e] font-bold py-3 rounded-xl uppercase text-xs border-2 border-[#ffb6c1] shadow-[4px_4px_0px_#2d0f5e] flex items-center justify-center gap-2">
+                📤 Compartilhar Resultado
+            </button>
+        </div>
+
+        <button id="btn-nova" class="w-full bg-[#ffb6c1] hover:bg-[#ffc8d2] text-[#2d0f5e] font-bold py-4 rounded-xl shadow-[8px_8px_0px_#ff6b35] border-2 border-white flex items-center justify-center gap-3 active:scale-95">
+            <span class="uppercase tracking-wider text-sm">Próximo Enigma</span>
+            <span class="text-xl text-[#46178f]">◆</span>
+        </button>
+    </div>
+
+    <script src="./script.js"></script> 
+</body>
+</html>
