@@ -20,7 +20,7 @@ cardInner.addEventListener('click', () => {
     cardInner.classList.toggle('[transform:rotateY(180deg)]');
 });
 
-// Buscar charada da API
+// Buscar charada da AP
 async function buscaCharada() {
     try {
         campoPergunta.textContent = 'Carregando...';
