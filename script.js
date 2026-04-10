@@ -29,6 +29,14 @@ async function buscaCharada() {
         const respostaApi = await fetch('https://api-de-charadas-vert.vercel.app/charadas/aleatoria');
         const dados = await respostaApi.json();
         
+        // VERIFICAÇÃO DO ERRO 2:
+        if (dados.error) {
+            campoPergunta.textContent = "Ops! " + dados.error;
+            campoResposta.textContent = "😓";
+            return; // Para a execução aqui se houver erro
+        }
+        
+        // Se não houver erro, exibe normalmente
         charadaAtual = { pergunta: dados.pergunta, resposta: dados.resposta };
         campoPergunta.textContent = dados.pergunta;
         campoResposta.textContent = dados.resposta;
@@ -38,7 +46,7 @@ async function buscaCharada() {
     } catch (erro) {
         campoPergunta.textContent = "Erro ao conectar com o servidor.";
         campoResposta.textContent = "❌";
-        console.error(erro);
+        console.error("Erro detalhado:", erro);
     }
 }
 
