@@ -26,7 +26,7 @@ async function buscaCharada() {
         campoPergunta.textContent = 'Carregando...';
         campoResposta.textContent = '...';
         
-        const respostaApi = await fetch('');
+        const respostaApi = await fetch('https://api-de-charadas-vert.vercel.app/charadas/aleatoria');
         const dados = await respostaApi.json();
         
         charadaAtual = { pergunta: dados.pergunta, resposta: dados.resposta };
